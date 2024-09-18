@@ -29,7 +29,6 @@ function Setup-Environment {
         throw "Unknown architecture: $archName"
     }
 
-    $SYSROOT = "$NDK_DIR/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
     $CC = "$NDK_DIR/toolchains/llvm/prebuilt/windows-x86_64/bin/$($config.TARGET)$API_LEVEL-clang.cmd"
     $PREFIX = "$BUILD_DIR/dist/$archName"
     $CROSS_FILE = "$BUILD_DIR/$archName-crossfile.txt"
@@ -44,13 +43,10 @@ function Setup-Environment {
 c = '$CC'
 ar = '$NDK_DIR/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar'
 strip = '$NDK_DIR/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-strip'
-pkgconfig = 'pkg-config'
+pkg-config = 'pkg-config'
 
 [properties]
 needs_exe_wrapper = true
-sys_root = '$SYSROOT'
-c_args = ['--sysroot=$SYSROOT']
-c_link_args = ['--sysroot=$SYSROOT']
 pkg_config_libdir = '$PREFIX/lib/pkgconfig'
 
 [host_machine]
